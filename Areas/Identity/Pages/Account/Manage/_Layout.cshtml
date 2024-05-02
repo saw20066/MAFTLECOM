@@ -1,5 +1,5 @@
 ﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -9,20 +9,35 @@
     }
 }
 
-<h1>Manage your account</h1>
-
-<div>
-    <h2>Change your account settings</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
+<div class="inner-banner py-5 pb-sm-0">
+    <section class="w3l-breadcrumb text-left py-sm-5 pb-0">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="w3breadcrumb-right">
+                           <partial name="_ManageNav" />
+                    
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-9">
-            @RenderBody()
+    </section>
+</div>
+
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    @RenderBody()
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 @section Scripts {
     @RenderSection("Scripts", required: false)

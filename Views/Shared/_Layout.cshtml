@@ -1,50 +1,324 @@
-﻿<!DOCTYPE html>
+﻿@using MAFTLECOME.Data;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MAFTLECOME</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MAFTLECOME.styles.css" asp-append-version="true" />
+    <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> MAF TELECOM-@ViewData["Title"]  </title>
+        <link rel="icon" type="image/jpeg" href="~/uploads/Logo.jpeg">
+        <!--/google-fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+        <!--//google-fonts -->
+        <!--/Template-CSS -->
+        <link rel="stylesheet" href="~/assets/css/style-starter.css">
+        <!--//Template-CSS -->
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MAFTLECOME</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <!-- top header -->
+        <section class="w3l-top-header py-3">
+            <div class="container">
+            <div class="d-grid main-top">
+                <div class="top-header-left">
+                    <ul class="info-top-gridshny">
+                        <li class="info-grid">
+                            <div class="info-icon"><span class="far fa-clock"></span></div>
+                            <div class="info-text">
+                                <p>Monday - Friday 08:00 - 20:00</p>
+                                <p>Saturday and Sunday - CLOSED</p>
+                            </div>
+
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="info-grid">
+                            <div class="info-icon"><span class="fas fa-phone-alt"></span></div>
+                            <div class="info-text">
+                                <p><a href="tel:+1(21) 234 4567">+1(21) 234 557 4567</a></p>
+                                <p><a href="tel:+1(21) 234 4568">+1(21) 234 557 45678</a></p>
+                            </div>
+
+                        </li>
+                        <li class="info-grid">
+                            <div class="info-icon"><span class="fas fa-map-marker-alt"></span></div>
+                            <div class="info-text">
+                                <p>34th Avenue</p>
+                                <p>New York, S2 Honey Block</p>
+
+                            </div>
+
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                </div>
+                <div class="top-header-right text-lg-right">
+                    <ul>
+                        <li>
+                            <a href="#facebook"><span class="fab fa-facebook-f"></span></a>
+                        </li>
+                        <li>
+                            <a href="#twitter"><span class="fab fa-twitter"></span></a>
+                        </li>
+                        <li><a href="#instagram" class="instagram mr-0"><span class="fab fa-instagram"></span></a></li>
+
+                    </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+    </section>  }
+    <!-- //top header -->
+    <!--/Header-->
+    <header id="site-header" class="">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1>
+                    <a class="navbar-brand pe-xl-5 pe-lg-4" asp-action="Index">
+                        MAF TELECOM
+                    </a>
+                </h1>
+
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav ms-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link active" text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Product" asp-action="GetALL">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Inventory" asp-action="GettALL">Inventory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                     
+                        <partial name="_LoginPartial" />
+                    </ul>
+                   
+                    <!--/search-right-->
+                    <ul class="header-search mx-lg-4">
+                        <div class="w3hny-search">
+                            <form action="#" method="GET" class="d-flex search-form">
+                                <input class="form-control" type="search" placeholder="Search..." aria-label="Search" required="">
+                                <button class="btn btn-style btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </ul>
+                    <!--//search-right-->
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <!--//Header-->
+
+
+    <div>
+        @RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - MAFTLECOME - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <!--/footer-9-->
+    <footer class="w3l-footer9">
+        <section class="footer-inner-main py-5">
+            <div class="container py-md-3">
+                <div class="right-side">
+                    <div class="row footer-hny-grids sub-columns">
+                        <div class="col-lg-4 sub-one-left pe-lg-5">
+                            <h6>About </h6>
+                            <p class="footer-phny pe-lg-3">Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at tempufddfel.Lorem ipsum dolor sit,l.Lorem ipsum dolor sit, amet consectetur elit. </p>
+                            <div class="columns-2 mt-lg-5 mt-4">
+                                <ul class="social">
+                                    <li>
+                                        <a href="#facebook"><span class="fab fa-facebook-f"></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#linkedin"><span class="fab fa-linkedin-in"></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#twitter"><span class="fab fa-twitter"></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#google"><span class="fab fa-google-plus-g"></span></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 sub-two-right">
+                            <h6>Useful Links</h6>
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li>
+                                    <a href="about.html">About Us</a>
+                                </li>
+
+                                <li>
+                                    <a href="services.html">Services</a>
+                                </li>
+
+                                <li>
+                                    <a href="#blog">Blog</a>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 sub-two-right">
+                            <h6>Company</h6>
+                            <ul>
+
+                                <li>
+                                    <a href="#why">Customer Services</a>
+                                </li>
+                                <li>
+                                    <a href="#licence">
+                                        Prompt Delivery
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#log">
+                                        Offers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#log">
+                                        Reliable Equipment
+                                    </a>
+                                </li>
+                                <li><a href="#career">Careers</a></li>
+
+
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 sub-one-left">
+                            <h6>Twitter Feed</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="below-section mt-5">
+                    <div class="copyright-footer">
+                        <div class="columns text-left">
+                            <p>
+                                © 2021 Construe. All rights reserved | Designed by <a href="https://w3layouts.com" target="_blank">W3layouts</a>
+                            </p>
+                        </div>
+                        <ul class="footer-w3list text-right">
+                            <li>
+                                <a href="#url">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#url">Terms &amp; Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Js scripts -->
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+        </script>
+        <!-- //move top -->
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!--//footer-9 -->
+    <!-- Template JavaScript -->
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/js/theme-change.js"></script>
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!-- //bootstrap -->
+    <script src="~/assets/js/bootstrap.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+
+
+
+
+    </body>
 </html>
+
+
