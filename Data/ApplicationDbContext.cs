@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using MAFTLECOME.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MAFTLECOME.Data
@@ -9,7 +10,7 @@ namespace MAFTLECOME.Data
             : base(options)
         {
         }
-
         public DbSet<Product> Products { get; set; }
+ 
     }
 }

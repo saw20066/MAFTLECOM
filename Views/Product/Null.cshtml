@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "TEST";
+    ViewData["Title"] = "NotFound";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="inner-banner py-5 pb-sm-0">
@@ -10,11 +10,12 @@
                     <ul class="breadcrumbs-custom-path">
                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                         <li class="active"><span class="fas fa-angle-double-right mx-2"></span> @ViewData["Title"]</li>
-
                     </ul>
                 </div>
             </div>
-
         </div>
     </section>
+</div>
+<div>
+    <p>Sorry, the item you are looking for is not available.</p>
 </div>

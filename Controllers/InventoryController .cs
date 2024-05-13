@@ -6,7 +6,7 @@ namespace MAFTLECOME.Controllers
     [Authorize(Roles = "Admin")]
     public class InventoryController : Controller
     {
-        public IActionResult GettALL()
+        public IActionResult test()
         {
             return View();
         }

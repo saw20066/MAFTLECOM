@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "TEST";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+</div>
+<div class="inner-banner py-5 pb-sm-0">
+    <section class="w3l-breadcrumb text-left py-sm-5 pb-0">
+        <div class="container">
+            <div class="w3breadcrumb-gids">
+                <div class="w3breadcrumb-right">
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="active"><span class="fas fa-angle-double-right mx-2"></span> @ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img src="@product.ImageURL" alt="@product.Name" style="max-width: 150px" />
+                        </td>
+                        <td class="align-middle">
+                            @product.Name
+                        </td>
+                        <td class="align-middle">
+                            @product.Description
+                        </td>
+                        <td class="align-middle">
+                            @product.Price.ToString("C") <!-- Format price as currency -->
+                        </td>
+                        <td class="align-middle">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+                                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                            }
+                            else
+                            {
+
+                                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@product.Id">Details</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="position:fixed; left:25px; bottom:25px;" class="text-white">
+    <a class ="btn btn-outline-info" asp-controller="Product" asp-action="Create">
+        <i class="bi bi-plus-circle">Add Item</i>
+    </a>
+</div>
