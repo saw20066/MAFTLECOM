@@ -1,21 +1,26 @@
 ﻿using MAFTLECOME.Data;
 using MAFTLECOME.Data.Services;
 using MAFTLECOME.Models;
+using MAFTLECOME.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 
-namespace MAFTLECOME.Controllers { 
+namespace MAFTLECOME.Controllers
+{
     public class ProductController : Controller
     {
         private readonly IProductsService _service;
+        private readonly IFileService _fileService;
 
         // Constructor for dependency injection
-        public ProductController(IProductsService service)
+        public ProductController(IProductsService service, IFileService fileService)
         {
             _service = service;
+            _fileService = fileService;
         }
         public async Task<IActionResult> Product_Index()
         {
@@ -27,11 +32,9 @@ namespace MAFTLECOME.Controllers {
         {
             return View();
         }
-
-
         [HttpPost]
 
-        public async Task<IActionResult> Create([Bind("Name,Description,ImageURL,Price,ArticleNumber")]Product product)
+        public async Task<IActionResult> Create([Bind("Name,Description,ImageURL,Price,ArticleNumber,Pricee,Stock,CartDetail,OrderDetail,Quantity")] Product product)
         {
             if (!ModelState.IsValid)
             {
@@ -39,13 +42,15 @@ namespace MAFTLECOME.Controllers {
             }
             await _service.AddAsync(product);
             return RedirectToAction(nameof(Product_Index));
+
+
         }
 
         //getproduct
 
-        public async Task<IActionResult> Details (int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var ProductDetails =  await _service.GetProductByIdAsync(id);
+            var ProductDetails = await _service.GetProductByIdAsync(id);
 
             if (ProductDetails == null) return View("Null");
             return View(ProductDetails);
@@ -64,14 +69,15 @@ namespace MAFTLECOME.Controllers {
 
         [HttpPost]
 
-        public async Task<IActionResult> Edit(int id ,[Bind("Id,Name,Description,ImageURL,Price,ArticleNumber")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,ImageURL,Price,ArticleNumber,Pricee,Stock,CartDetail,OrderDetail,Quantity")] Product product)
+
         {
-          
+
             if (!ModelState.IsValid)
             {
                 return View(product);
             }
-            await _service.UpdateAsync(id,product);
+            await _service.UpdateAsync(id, product);
             return RedirectToAction(nameof(Product_Index));
         }
 
@@ -84,7 +90,7 @@ namespace MAFTLECOME.Controllers {
         }
 
 
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
 
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

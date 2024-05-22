@@ -1,9 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "TEST";
+    ViewData["Title"] = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-</div>
 <div class="inner-banner py-5 pb-sm-0">
     <section class="w3l-breadcrumb text-left py-sm-5 pb-0">
         <div class="container">
@@ -19,7 +18,7 @@
     </section>
 </div>
 
-<div class="row">
+
     <div class="col-md-8 offset-md-2">
         <table class="table">
             <thead>
@@ -51,11 +50,12 @@
                             @if (User.IsInRole("Admin"))
                             {
                                 <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
-                                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                                <a asp-action="DeleteProduct" asp-controller="Book" asp-route-id="@product.Id" class="btn btn-danger" onclick="return window.confirm('Are you sure?')">Delete</a>
+
                             }
                             else
                             {
-
+                                <button type="button" onclick="add(@product.Id)" class="btn btn-primary">Add to cart</button>
                                 <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@product.Id">Details</a>
                             }
                         </td>
@@ -65,8 +65,40 @@
         </table>
     </div>
 </div>
-<div style="position:fixed; left:25px; bottom:25px;" class="text-white">
-    <a class ="btn btn-outline-info" asp-controller="Product" asp-action="Create">
-        <i class="bi bi-plus-circle">Add Item</i>
-    </a>
-</div>
+@if (User.IsInRole("Admin"))
+{
+    <div style="position:fixed; left:25px; bottom:25px;" class="text-white">
+        <a class="btn btn-outline-info" asp-controller="Product" asp-action="Create">
+            <i class="bi bi-plus-circle">Add Item</i>
+        </a>
+    </div>
+
+}
+
+
+@section Scripts{
+    <script>
+        async function add(bookId) {
+            var usernameEl = document.getElementById("username");
+            if (usernameEl == null) {
+                window.location.href = "/Identity/Account/Login";
+                //var username=usernameEl.innerText;
+                //  if(username.length<1){
+                //      window.location.href="/Identity/Account/Login";
+                //  }
+            }
+            try {
+                var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+                    var cartCountEl = document.getElementById("cartCount");
+                    cartCountEl.innerHTML = result;
+                    window.location.href = "#cartCount";
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+}

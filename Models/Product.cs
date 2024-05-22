@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MAFTLECOME.Models
 {
@@ -15,7 +16,7 @@ namespace MAFTLECOME.Models
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
-        
+
         [Display(Name = "Image URL")]
         [Required(ErrorMessage = "Image URL is required")]
         public string ImageURL { get; set; }
@@ -24,9 +25,18 @@ namespace MAFTLECOME.Models
         [Required(ErrorMessage = "Price is required")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
         public decimal Price { get; set; }
+        public bool Pricee { get; set; }
 
         [Display(Name = "Article Number")]
         [Required(ErrorMessage = "Article Number is required")]
         public string ArticleNumber { get; set; }
+
+        public List<OrderDetail> OrderDetail { get; set; }
+        public List<CartDetail> CartDetail { get; set; }
+        public Stock Stock { get; set; }
+
+        [NotMapped]
+        public int Quantity { get; set; }
+
     }
 }

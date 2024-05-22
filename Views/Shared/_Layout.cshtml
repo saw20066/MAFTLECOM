@@ -5,16 +5,16 @@
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title> MAF TELECOM-@ViewData["Title"]  </title>
-        <link rel="icon" type="image/jpeg" href="~/uploads/Logo.jpeg">
-        <!--/google-fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
-        <!--//google-fonts -->
-        <!--/Template-CSS -->
-        <link rel="stylesheet" href="~/assets/css/style-starter.css">
-        <!--//Template-CSS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> MAF TELECOM-@ViewData["Title"]  </title>
+    <link rel="icon" type="image/jpeg" href="~/uploads/Logo.jpeg">
+    <!--/google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <!--//google-fonts -->
+    <!--/Template-CSS -->
+    <link rel="stylesheet" href="~/assets/css/style-starter.css">
+    <!--//Template-CSS -->
 </head>
 <body>
     @if (!SignInManager.IsSignedIn(User))
@@ -22,51 +22,52 @@
         <!-- top header -->
         <section class="w3l-top-header py-3">
             <div class="container">
-            <div class="d-grid main-top">
-                <div class="top-header-left">
-                    <ul class="info-top-gridshny">
-                        <li class="info-grid">
-                            <div class="info-icon"><span class="far fa-clock"></span></div>
-                            <div class="info-text">
-                                <p>Monday - Friday 08:00 - 20:00</p>
-                                <p>Saturday and Sunday - CLOSED</p>
-                            </div>
+                <div class="d-grid main-top">
+                    <div class="top-header-left">
+                        <ul class="info-top-gridshny">
+                            <li class="info-grid">
+                                <div class="info-icon"><span class="far fa-clock"></span></div>
+                                <div class="info-text">
+                                    <p>Monday - Friday 08:00 - 20:00</p>
+                                    <p>Saturday and Sunday - CLOSED</p>
+                                </div>
 
-                        </li>
-                        <li class="info-grid">
-                            <div class="info-icon"><span class="fas fa-phone-alt"></span></div>
-                            <div class="info-text">
-                                <p><a href="tel:+1(21) 234 4567">+1(21) 234 557 4567</a></p>
-                                <p><a href="tel:+1(21) 234 4568">+1(21) 234 557 45678</a></p>
-                            </div>
+                            </li>
+                            <li class="info-grid">
+                                <div class="info-icon"><span class="fas fa-phone-alt"></span></div>
+                                <div class="info-text">
+                                    <p><a href="tel:+1(21) 234 4567">+1(21) 234 557 4567</a></p>
+                                    <p><a href="tel:+1(21) 234 4568">+1(21) 234 557 45678</a></p>
+                                </div>
 
-                        </li>
-                        <li class="info-grid">
-                            <div class="info-icon"><span class="fas fa-map-marker-alt"></span></div>
-                            <div class="info-text">
-                                <p>34th Avenue</p>
-                                <p>New York, S2 Honey Block</p>
+                            </li>
+                            <li class="info-grid">
+                                <div class="info-icon"><span class="fas fa-map-marker-alt"></span></div>
+                                <div class="info-text">
+                                    <p>34th Avenue</p>
+                                    <p>New York, S2 Honey Block</p>
 
-                            </div>
+                                </div>
 
-                        </li>
-                    </ul>
-                </div>
-                <div class="top-header-right text-lg-right">
-                    <ul>
-                        <li>
-                            <a href="#facebook"><span class="fab fa-facebook-f"></span></a>
-                        </li>
-                        <li>
-                            <a href="#twitter"><span class="fab fa-twitter"></span></a>
-                        </li>
-                        <li><a href="#instagram" class="instagram mr-0"><span class="fab fa-instagram"></span></a></li>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="top-header-right text-lg-right">
+                        <ul>
+                            <li>
+                                <a href="#facebook"><span class="fab fa-facebook-f"></span></a>
+                            </li>
+                            <li>
+                                <a href="#twitter"><span class="fab fa-twitter"></span></a>
+                            </li>
+                            <li><a href="#instagram" class="instagram mr-0"><span class="fab fa-instagram"></span></a></li>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>  }
+        </section>
+    }
     <!-- //top header -->
     <!--/Header-->
     <header id="site-header" class="">
@@ -99,20 +100,48 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                     
-                        <partial name="_LoginPartial" />
-                    </ul>
-                   
-                    <!--/search-right-->
-                    <ul class="header-search mx-lg-4">
-                        <div class="w3hny-search">
-                            <form action="#" method="GET" class="d-flex search-form">
-                                <input class="form-control" type="search" placeholder="Search..." aria-label="Search" required="">
-                                <button class="btn btn-style btn-primary" type="submit"><i class="fas fa-search"></i></button>
-                            </form>
+
+                        @if (User.IsInRole(Roles.Admin.ToString()))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/AdminOperations/Dashboard">Dashboard</a>
+                            </li>
+                            @*  <li class="nav-item">
+                        <a class="nav-link"
+                        href="/AdminOperations/AllOrders">Orders</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/Stock/Index">Stock</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/Genre/Index">Genre</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/Book/Index">Books</a>
+                        </li> *@
+                        }
+
+                        @*<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
                         </div>
+                        </li>*@
                     </ul>
-                    <!--//search-right-->
+                    <partial name="_LoginPartial" />
+
+                </div>
+        </div>
+                    </ul>
+
+                   
                 </div>
                 <!-- toggle switch for light and dark theme -->
                 <div class="mobile-position">
@@ -133,8 +162,7 @@
         </div>
     </header>
     <!--//Header-->
-
-
+    
     <div>
         @RenderBody()
     </div>
@@ -318,7 +346,25 @@
 
 
 
-    </body>
+</body>
+< src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></>
+<script>
+    loadCartCount();
+    async function loadCartCount() {
+        try {
+            var response = await fetch(`/Cart/GetTotalItemInCart`);
+            console.log(response)
+            if (response.status == 200) {
+                var result = await response.json();
+                var cartCountEl = document.getElementById("cartCount");
+                cartCountEl.innerHTML = result;
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+</script>
 </html>
 
 
