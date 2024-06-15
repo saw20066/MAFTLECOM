@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http; // Ensure this namespace is included
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MAFTLECOME.Models
 {
@@ -31,12 +32,13 @@ namespace MAFTLECOME.Models
         [Required(ErrorMessage = "Article Number is required")]
         public string ArticleNumber { get; set; }
 
-        public List<OrderDetail> OrderDetail { get; set; }
-        public List<CartDetail> CartDetail { get; set; }
-        public Stock Stock { get; set; }
+        public List<OrderDetail>? OrderDetail { get; set; }
+        public List<CartDetail>? CartDetail { get; set; }
+        public Stock? Stock { get; set; }
 
         [NotMapped]
         public int Quantity { get; set; }
 
     }
+
 }

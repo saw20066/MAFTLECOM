@@ -11,7 +11,7 @@
                 <div class="w3breadcrumb-right">
                     <ul class="breadcrumbs-custom-path">
                         <li><a asp-controller ="Home" asp-action="Index">Home</a></li>
-                        <li class="active"><span class="fas fa-angle-double-right mx-2"></span> About</li>
+                        <li class="active"><span class="fas fa-angle-double-right mx-2"></span> @ViewData["Title"]</li>
 
                     </ul>
                 </div>
@@ -31,20 +31,19 @@
                     Who We Are
                 </h3>
                 <h5 class="w3sub-text my-3">
-                    We're in this business since 1975 and We provide the best insdustrial services
+                    We're in this business since 2001 and we provide the best telecom and digital development services
                 </h5>
-                <p>
-                    Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio.suscipit totam animi
-                    consequatur saepe.Ea consequuntur illum
-                    facere aperiam sequi optio consectetur adipisicing elit.suscipit totam animi.
+                <p>                    
+                    MAF Telecom specializes in comprehensive electrical installation and innovative digital solutions. 
+                    Our team is dedicated to delivering top-quality service and exceptional results, ensuring the highest standards of safety and efficiency. 
+                  
                 </p>
                 <p class="mt-3">
-                    Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio.suscipit totam animi
-                    consequatur saepe.Ea consequuntur illum
-                    facere aperiam sequi optio consectetur adipisicing elit.suscipit totam animi.
+                    We pride ourselves on our customer-centric approach and our commitment to staying ahead with the latest technological advancements.
+                    Partner with us to experience reliable, professional, and cutting-edge services.
                 </p>
                 <div class="w3banner-content-btns">
-                    <a href="about.html" class="btn btn-style btn-outline-dark mt-lg-5 mt-4">Read More </a>
+                    <a asp-controller="Home" asp-action="About" class="btn btn-style btn-outline-dark mt-lg-5 mt-4">Read More </a>
                 </div>
             </div>
             <div class="content-gd col-lg-6 mt-lg-0 mt-5">
@@ -71,26 +70,33 @@
                         </h3>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio.suscipit totam animi
-                        consequatur saepe.Ea consequuntur illum
-                        facere aperiam sequi optio consectetur adipisicing elit.
+                        At MAF Telecom, we are committed to delivering personalized and top-quality services tailored to meet your needs.
+                        Our offerings include:
                     </p>
                     <div class="subscribe-cat">
                         <div class="subscribe-cat-gd">
                             <a href="#" class="subscribe-cat-link">Architecture</a>
-                            <p class="">Lorem ipsum viverra feugiat. Pellen tesque libero justo.</p>
+                            <p class="">
+                                Innovative and functional architectural designs to meet your specific requirements.
+                            </p>
                         </div>
                         <div class="subscribe-cat-gd">
                             <a href="#" class="subscribe-cat-link">Renovation</a>
-                            <p class="">Lorem ipsum viverra feugiat. Pellen tesque libero justo.</p>
+                            <p class="">
+                                Transforming spaces with modern aesthetics and enhanced functionality.
+                            </p>
                         </div>
                         <div class="subscribe-cat-gd">
                             <a href="#" class="subscribe-cat-link">Construction</a>
-                            <p class="">Lorem ipsum viverra feugiat. Pellen tesque libero justo.</p>
+                            <p class="">
+                                High-quality construction services, ensuring timely and within-budget project completion.
+                            </p>
                         </div>
                         <div class="subscribe-cat-gd">
                             <a href="#" class="subscribe-cat-link">Modern Tools</a>
-                            <p class="">Lorem ipsum viverra feugiat. Pellen tesque libero justo.</p>
+                            <p class="">
+                                Utilizing the latest tools and technology to deliver efficient and reliable solutions.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -182,14 +188,14 @@
                 <div class="title-content">
                     <h6 class="title-subw3hny">Join with Us</h6>
                     <h3 class="title-w3l two mb-3">Want to Join?</h3>
-                    <p class="pe-lg-5">Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at tempufddfel.Lorem ipsum dolor sit, amet consectetur elit.</p>
+                    <p class="pe-lg-5">Become a part of our growing community. Stay updated with the latest news, receive exclusive offers, and be the first to know about our new services and innovations. Join us today!</p>
 
                 </div>
             </div>
             <div class="col-lg-5 history-info align-self">
                 <div class="w3banner-content-btns d-sm-flex justify-content-end">
-                    <a href="about.html" class="btn btn-style btn-primary mt-lg-5 mt-4 me-sm-3">Read More </a>
-                    <a href="contact.html" class="btn btn-style transparant-btn btn-primary mt-lg-5 mt-4 me-2">Contact Us </a>
+                    <a asp-controller="Home" asp-action="About" class="btn btn-style btn-primary mt-lg-5 mt-4 me-sm-3">Read More </a>
+                    <a asp-controller="Home" asp-action="Contact" class="btn btn-style transparant-btn btn-primary mt-lg-5 mt-4 me-2">Contact Us </a>
                 </div>
             </div>
         </div>
@@ -210,108 +216,74 @@
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                01. Question Number
-                                one?
+                                01. What services does MAF Telecom provide?
                             </button>
                         </h4>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis iste
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beat vitaedicta
-                                sunt explicabo.
+                                MAF Telecom specializes in electrical installation services,
+                                digital development including websites and apps, 
+                                and comprehensive project management from concept to completion.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                02.Question Number
-                                two?
+                                02. How long has MAF Telecom been in business?
                             </button>
                         </h4>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis iste
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beat vitaedicta
-                                sunt explicabo.
+                                MAF Telecom has been providing top-notch services since 2001, continuously growing and expanding its expertise.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                03.Question Number
-                                three?
+                                03. What makes MAF Telecom stand out?
                             </button>
                         </h4>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis iste
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beat vitaedicta
-                                sunt explicabo.
+                                Our commitment to quality, customer-centric approach, and use of the latest technology set us apart. We prioritize safety, efficiency, and innovation in all our projects.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="headingFourth">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth">
-                                04.Question Number
-                                Fourth?
+                                04. What types of projects does MAF Telecom handle?
                             </button>
                         </h4>
                         <div id="collapseFourth" class="accordion-collapse collapse" aria-labelledby="headingFourth" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis iste
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beat vitaedicta
-                                sunt explicabo.
+                                We handle a wide range of projects including residential, commercial, and industrial electrical installations, as well as digital development projects for various industries.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="headingFifth">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifth" aria-expanded="false" aria-controls="collapseThree">
-                                05.Question Number
-                                Fifth?
+                                05. How can I get in touch with MAF Telecom for a project?
                             </button>
                         </h4>
                         <div id="collapseFifth" class="accordion-collapse collapse" aria-labelledby="headingFifth" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis iste
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beat vitaedicta
-                                sunt explicabo.
+                                You can contact us through our website, email, or phone. Our team is ready to discuss your needs and provide tailored solutions for your project.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h4 class="accordion-header" id="headingSixth">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSixth" aria-expanded="false" aria-controls="collapseSixth">
-                                06.Question Number
-                                Sixth?
+                                06. Does MAF Telecom offer maintenance and support services?
                             </button>
                         </h4>
                         <div id="collapseSixth" class="accordion-collapse collapse" aria-labelledby="headingSixth" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis iste
-                                natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beat vitaedicta
-                                sunt explicabo.
+                                Yes, we offer ongoing maintenance and support services to ensure that your electrical systems and digital solutions continue to operate efficiently and effectively.
                             </div>
                         </div>
                     </div>

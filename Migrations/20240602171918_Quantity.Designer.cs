@@ -4,16 +4,19 @@ using MAFTLECOME.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MAFTLECOME.Data.Migrations
+namespace MAFTLECOME.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240602171918_Quantity")]
+    partial class Quantity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,7 +122,7 @@ namespace MAFTLECOME.Data.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("CartDetail", (string)null);
+                    b.ToTable("CartDetail");
                 });
 
             modelBuilder.Entity("MAFTLECOME.Models.Order", b =>
@@ -174,7 +177,7 @@ namespace MAFTLECOME.Data.Migrations
 
                     b.HasIndex("OrderStatusId");
 
-                    b.ToTable("Order", (string)null);
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("MAFTLECOME.Models.OrderDetail", b =>
@@ -203,7 +206,7 @@ namespace MAFTLECOME.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetail", (string)null);
+                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("MAFTLECOME.Models.OrderStatus", b =>
@@ -224,7 +227,7 @@ namespace MAFTLECOME.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatus", (string)null);
+                    b.ToTable("OrderStatus");
                 });
 
             modelBuilder.Entity("MAFTLECOME.Models.Product", b =>
@@ -258,9 +261,12 @@ namespace MAFTLECOME.Data.Migrations
                     b.Property<bool>("Pricee")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("MAFTLECOME.Models.ShoppingCart", b =>
@@ -280,7 +286,7 @@ namespace MAFTLECOME.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShoppingCart", (string)null);
+                    b.ToTable("ShoppingCart");
                 });
 
             modelBuilder.Entity("MAFTLECOME.Models.Stock", b =>
@@ -302,7 +308,7 @@ namespace MAFTLECOME.Data.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("Stock", (string)null);
+                    b.ToTable("Stock");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

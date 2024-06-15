@@ -3,7 +3,21 @@
     ViewData["Title"] = "Checkout";
 }
 
-<h2>Checkout</h2>
+<div class="inner-banner py-5 pb-sm-0">
+    <section class="w3l-breadcrumb text-left py-sm-5 pb-0">
+        <div class="container">
+            <div class="w3breadcrumb-gids">
+                <div class="w3breadcrumb-right">
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="active"><span class="fas fa-angle-double-right mx-2"></span> @ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="col-md-8 offset-md-2">
 <form asp-action="Checkout">
     <div class="py-2">
         <label asp-for="Name">Name*</label>
@@ -49,3 +63,4 @@
 
     </div>
 </form>
+</div>

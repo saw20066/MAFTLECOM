@@ -1,13 +1,9 @@
-﻿using MAFTLECOME.Data;
-using MAFTLECOME.Data.Services;
+﻿using MAFTLECOME.Data.Services;
 using MAFTLECOME.Models;
 using MAFTLECOME.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Numerics;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace MAFTLECOME.Controllers
 {
@@ -15,6 +11,7 @@ namespace MAFTLECOME.Controllers
     {
         private readonly IProductsService _service;
         private readonly IFileService _fileService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         // Constructor for dependency injection
         public ProductController(IProductsService service, IFileService fileService)
@@ -22,19 +19,20 @@ namespace MAFTLECOME.Controllers
             _service = service;
             _fileService = fileService;
         }
+
         public async Task<IActionResult> Product_Index()
         {
             var data = await _service.GetProductsAsync();
             return View(data);
         }
-        //addproduct
+
+        // Add product
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-
-        public async Task<IActionResult> Create([Bind("Name,Description,ImageURL,Price,ArticleNumber,Pricee,Stock,CartDetail,OrderDetail,Quantity")] Product product)
+        public async Task<IActionResult> Create([Bind("Name,Description,ImageURL,Price,ArticleNumber")] Product product)
         {
             if (!ModelState.IsValid)
             {
@@ -42,23 +40,17 @@ namespace MAFTLECOME.Controllers
             }
             await _service.AddAsync(product);
             return RedirectToAction(nameof(Product_Index));
+        } 
 
-
-        }
-
-        //getproduct
-
+        // Get product details
         public async Task<IActionResult> Details(int id)
         {
             var ProductDetails = await _service.GetProductByIdAsync(id);
-
             if (ProductDetails == null) return View("Null");
             return View(ProductDetails);
-
-
-
         }
-        //editproduct/1
+
+        // Edit product
         public async Task<IActionResult> Edit(int id)
         {
             var ProductDetails = await _service.GetProductByIdAsync(id);
@@ -66,22 +58,39 @@ namespace MAFTLECOME.Controllers
             return View(ProductDetails);
         }
 
-
         [HttpPost]
-
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,ImageURL,Price,ArticleNumber,Pricee,Stock,CartDetail,OrderDetail,Quantity")] Product product)
-
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageURL,Price,ArticleNumber")] Product product)
         {
+            if (id != product.Id)
+            {
+                return NotFound();
+            }
 
             if (!ModelState.IsValid)
             {
                 return View(product);
             }
-            await _service.UpdateAsync(id, product);
+
+            try
+            {
+                await _service.UpdateAsync(id, product);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!await ProductExists(product.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
             return RedirectToAction(nameof(Product_Index));
         }
 
-        //DEleteproduct
+        // Delete product
         public async Task<IActionResult> Delete(int id)
         {
             var ProductDetails = await _service.GetProductByIdAsync(id);
@@ -89,9 +98,7 @@ namespace MAFTLECOME.Controllers
             return View(ProductDetails);
         }
 
-
         [HttpPost, ActionName("Delete")]
-
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var ProductDetails = await _service.GetProductByIdAsync(id);
@@ -100,9 +107,10 @@ namespace MAFTLECOME.Controllers
             return RedirectToAction(nameof(Product_Index));
         }
 
-
+        private async Task<bool> ProductExists(int id)
+        {
+            var product = await _service.GetProductByIdAsync(id);
+            return product != null;
+        }
     }
-
 }
-
-

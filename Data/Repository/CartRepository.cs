@@ -105,16 +105,16 @@ namespace ProductShoppingCartMvcUI.Repositories
             var userId = GetUserId();
             if (userId == null)
                 throw new InvalidOperationException("Invalid userid");
-            var shoppingCart = await _db.ShoppingCarts
-                                  .Include(a => a.CartDetails)
-                                  .ThenInclude(a => a.Product)
-                                  .ThenInclude(a => a.Stock)
-                                  .Include(a => a.CartDetails)
-                                  .ThenInclude(a => a.Product)
-                                  .Where(a => a.UserId == userId).FirstOrDefaultAsync();
-            return shoppingCart;
 
+            var shoppingCart = await _db.ShoppingCarts
+                .Include(cart => cart.CartDetails)
+                    .ThenInclude(cartDetail => cartDetail.Product)
+                        .ThenInclude(product => product.Stock)
+                .SingleOrDefaultAsync(cart => cart.UserId == userId);
+
+            return shoppingCart;
         }
+
         public async Task<ShoppingCart> GetCart(string userId)
         {
             var cart = await _db.ShoppingCarts.FirstOrDefaultAsync(x => x.UserId == userId);

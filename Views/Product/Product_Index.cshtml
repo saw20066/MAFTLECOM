@@ -19,51 +19,56 @@
 </div>
 
 
-    <div class="col-md-8 offset-md-2">
-        <table class="table">
-            <thead>
-                <tr class="text-center">
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var product in Model)
-                {
-                    <tr>
-                        <td class="align-middle">
-                            <img src="@product.ImageURL" alt="@product.Name" style="max-width: 150px" />
-                        </td>
-                        <td class="align-middle">
-                            @product.Name
-                        </td>
-                        <td class="align-middle">
-                            @product.Description
-                        </td>
-                        <td class="align-middle">
-                            @product.Price.ToString("C") <!-- Format price as currency -->
-                        </td>
-                        <td class="align-middle">
-                            @if (User.IsInRole("Admin"))
-                            {
+<div class="col-md-8 offset-md-2">
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td class="align-middle">
+                        <img src="@product.ImageURL" alt="@product.Name" style="max-width: 150px" />
+                    </td>
+                    <td class="align-middle">
+                        @product.Name
+                    </td>
+                    <td class="align-middle">
+                        @product.Description
+                    </td>
+                    <td class="align-middle">
+                        @product.Price.ToString("C") <!-- Format price as currency -->
+                    </td>
+                    <td class="align-middle">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="btn-group-vertical" role="group" aria-label="Admin Actions">
                                 <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
-                                <a asp-action="DeleteProduct" asp-controller="Book" asp-route-id="@product.Id" class="btn btn-danger" onclick="return window.confirm('Are you sure?')">Delete</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-controller="Product" asp-route-id="@product.Id" onclick="return window.confirm('Are you sure?')">Delete</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="btn-group-vertical" role="group" aria-label="User Actions">
+                                <button type="button" onclick="add(@product.Id)" class="btn btn-primary">Add to Cart</button>
+                                <a class="btn btn-outline-info mt-2" asp-action="Details" asp-route-id="@product.Id">Details</a>
+                            </div>
+                        }
+                    </td>
 
-                            }
-                            else
-                            {
-                                <button type="button" onclick="add(@product.Id)" class="btn btn-primary">Add to cart</button>
-                                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@product.Id">Details</a>
-                            }
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 </div>
 @if (User.IsInRole("Admin"))
 {
@@ -78,17 +83,17 @@
 
 @section Scripts{
     <script>
-        async function add(bookId) {
+        async function add(productId) {
             var usernameEl = document.getElementById("username");
             if (usernameEl == null) {
                 window.location.href = "/Identity/Account/Login";
-                //var username=usernameEl.innerText;
-                //  if(username.length<1){
-                //      window.location.href="/Identity/Account/Login";
-                //  }
+                var username=usernameEl.innerText;
+                  if(username.length<1){
+                      window.location.href="/Identity/Account/Login";
+                  }
             }
             try {
-                var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
+                var response = await fetch(`/Cart/AddItem?productId=${productId}`);
                 if (response.status == 200) {
                     var result = await response.json();
                     var cartCountEl = document.getElementById("cartCount");

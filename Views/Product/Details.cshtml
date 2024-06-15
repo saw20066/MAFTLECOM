@@ -1,6 +1,6 @@
 ﻿@model Product
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Product Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,37 +19,75 @@
     </section>
 </div>
 
-<div class="row">
-    <div class="col-md-8 offset-2">
-            <div class="form-group">
-                <label asp-for=" ArticleNumber" class="control-label"></label>
-            <input asp-for=" ArticleNumber" class="form-control" readonly />
-                <span asp-validation-for=" ArticleNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" readonly/>
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-            <input asp-for="Description" class="form-control" readonly />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-            <input asp-for="Price" class="form-control" readonly />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageURL" class="control-label"></label>
-            <input asp-for="ImageURL" class="form-control" readonly />
-                <span asp-validation-for="ImageURL" class="text-danger"></span>
-            </div>
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header" style="background-color: black;">
+            <h5 class="card-title mb-0 text-white">@Model.Name</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 text-center mb-4">
+                    <img src="@Model.ImageURL" class="img-fluid rounded" alt="@Model.Name">
+                </div>
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Article Number:</dt>
+                        <dd class="col-sm-8">@Model.ArticleNumber</dd>
 
-            <div class="form-group">
-                <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-                <a class="btn btn-outline-secondary" asp-action="Product_Index">Show All</a>
+                        <dt class="col-sm-4">Description:</dt>
+                        <dd class="col-sm-8">@Model.Description</dd>
+
+                        <dt class="col-sm-4">Price:</dt>
+                        <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+
+                        <dt class="col-sm-4">Weight:</dt>
+                        <dd class="col-sm-8">1.2 kg</dd>
+
+                        <dt class="col-sm-4">Dimensions:</dt>
+                        <dd class="col-sm-8">25 x 15 x 10 cm</dd>
+
+                        <dt class="col-sm-4">Color:</dt>
+                        <dd class="col-sm-8">Black</dd>
+
+                        <dt class="col-sm-4">Material:</dt>
+                        <dd class="col-sm-8">Plastic</dd>
+                    </dl>
+                </div>
             </div>
+            <div class="text-right mt-4">
+                <a href="@Url.Action("Product_Index", "Product")" class="btn btn-outline-secondary">Show All Products</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row my-5">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow-lg">
+            <div class="card-header" style="background-color: black;">
+                <h5 class="card-title mb-0 text-white">User Reviews</h5>
+            </div>
+            <div class="card-body">
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="User Name" width="50">
+                    <div class="media-body">
+                        <h6 class="mt-0">John Doe</h6>
+                        <p>Great product! Highly recommend.</p>
+                        <small class="text-muted">Jan 15, 2024</small>
+                    </div>
+                </div>
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="User Name" width="50">
+                    <div class="media-body">
+                        <h6 class="mt-0">Jane Smith</h6>
+                        <p>Good value for the price.</p>
+                        <small class="text-muted">Feb 10, 2024</small>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="#" class="btn btn-outline-success">Write a Review</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
