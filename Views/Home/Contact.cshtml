@@ -25,37 +25,34 @@
     <div class="alert alert-info">
         @ViewBag.Message
     </div>
-}
+}                   
+
 
 <!-- /contact-section -->
 <section class="py-5 about-main" id="contact">
     <div class="container py-md-4 py-2">
-        <!--/form-->
-        <div class="map-content-9 py-5" id="contact">
-            <div class="map-content-9-in">
-                <div class="w3-map-content-9-form">
-                    <h6 class="title-subw3hny mb-2 text-center mx-auto">Fill out the form.</h6>
-                    <h3 class="title-w3l mb-sm-5 mb-3 text-center">Contact Us</h3>
+            <!--/form-->
+            <div class="map-content-9 py-5" id="contact">
+                <div class="map-content-9-in">
+                    <div class="w3-map-content-9-form">
+                        <h6 class="title-subw3hny mb-2 text-center mx-auto">Fill out the form.</h6>
+                        <h3 class="title-w3l mb-sm-5 mb-3 text-center">Contact Us</h3>
                     <form method="post" asp-controller="Home" asp-action="Contact" enctype="multipart/form-data">
                         <div class="twice-two">
-                            <input type="text" class="form-control" asp-for="Name" placeholder="Name" required />
-                            <input type="email" class="form-control" asp-for="Email" placeholder="Email" required />
-                        </div>
-                        <div class="twice">
-                            <input type="text" class="form-control" asp-for="Subject" placeholder="Subject" required />
-                        </div>
-                        <textarea class="form-control" asp-for="Body" placeholder="Message" required></textarea>
-                        <div class="twice mt-3">
-                            <input type="file" class="form-control" asp-for="Attachment" />
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-style mt-4 d-sm-inline d-block">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
-                        </div>
-                    </form>
+                                <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="Name" required="">
+                                <input type="email" class="form-control" name="w3lSender" id="w3lSender" placeholder="Email" required="">
+                            </div>
+                            <div class="twice">
+                                <input type="text" class="form-control" name="w3lSubject" id="w3lSubject" placeholder="Subject" required="">
+                            </div>
+                            <textarea name="w3lMessage" class="form-control" id="w3lMessage" placeholder="Message" required=""></textarea>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary btn-style mt-4 d-sm-inline d-block">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--//form-->
         <div class="row cont-details">
             <div class="col-md-6 inn-con-phnema-gd margin-up mt-lg-5 mt-4">
                 <div class="cont-top">
@@ -64,7 +61,12 @@
                     </div>
                     <div class="cont-right">
                         <h6>Call for help :</h6>
-                        <p><a href="tel:+1(21) 234 4567">+1(21) 234 557 4567</a></p>
+                        <p>
+                            <a href="tel:
++33-768-367-220">
+                                +33-768-367-220
+                            </a>
+                        </p>
                         <p><a href="tel:+1(21) 234 4567">+1(21) 234 557 4568</a></p>
                     </div>
                 </div>
@@ -76,8 +78,8 @@
                     </div>
                     <div class="cont-right">
                         <h6>Mail us:</h6>
-                        <p><a href="mailto:support@mail.com" class="mail">support@mail.com</a></p>
-                        <p><a href="mailto:contact@mail.com" class="mail">contact@mail.com</a></p>
+                        <p><a href="Youness.kherbachegmail.com" class="mail">support@mail.com</a></p>
+                        <p><a href="Maftelecom@Outlook.Fr" class="mail">contact@mail.com</a></p>
                     </div>
                 </div>
             </div>

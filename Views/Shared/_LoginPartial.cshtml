@@ -1,27 +1,28 @@
-﻿﻿@using MAFTLECOME.Data;
+﻿﻿﻿@using MAFTLECOME.Data;
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
-   
+
 
     @if (SignInManager.IsSignedIn(User))
     {
         /* <li class="nav-item">
-            <a class="nav-link" href="/Cart/GetUserCart">
-            <span id="cartCount" class="badge text-bg-info">0</span>
-                <i class="bi bi-cart text-white"></i>
+        <a class="nav-link" href="/Cart/GetUserCart">
+        <span id="cartCount" class="badge text-bg-info">0</span>
+        <i class="bi bi-cart text-white"></i>
         </a>
         </li> */
         @if (!User.IsInRole("Admin"))
         {
             <li class="nav-item">
                 <a class="nav-link" href="/Cart/GetUserCart">
-                <i class="fas fa-shopping-cart"></i> <!-- FontAwesome cart icon -->
-                <span id="cartCount" class="badge bg-info">0</span>
-            </a>
-        </li> }
+                    <i class="fas fa-shopping-cart"></i> <!-- FontAwesome cart icon -->
+                    <span id="cartCount" class="badge bg-info">0</span>
+                </a>
+            </li>
+        }
         <li class="nav-item">
             <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 Hello <span id="username">@User.Identity?.Name</span>!

@@ -1,6 +1,6 @@
 ﻿@model ShoppingCart
 @{
-    ViewData["Title"] = "GetUserCart";
+    ViewData["Title"] = "My Cart";
 }
 <div class="inner-banner py-5 pb-sm-0">
     <section class="w3l-breadcrumb text-left py-sm-5 pb-0">
@@ -16,18 +16,19 @@
         </div>
     </section>
 </div>
-<div class="col-md-8 offset-md-2">
-<div style="width:90%;margin:auto" class="mt-2">
+
+<section class="w3l-subscribe-content py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
     @if (Model != null && Model.CartDetails != null && Model.CartDetails.Count > 0)
     {
-        <h5>My Cart</h5>
-
         <table class="table table-striped">
             <tr>
                 <th>Product</th>
                 <th>Image</th>
                     <th>ArticleNumber</th>
-                <th>Unit Price(INR)</th>
+                <th>Unit Price</th>
                 <th>Total Price</th>
                 <th>Action</th>
             </tr>
@@ -68,8 +69,8 @@
         </table>
 
         <div class="my-2">
-            <h5>Total(INR): </h5>
-            @(Model.CartDetails.Select(item => item.Product.Price * item.Quantity).Sum())
+            <h5>Total: </h5>
+                        @(Model.CartDetails.Select(item => item.Product.Price * item.Quantity).Sum()) €
         </div>
 
         <div class="my-2">
@@ -87,3 +88,5 @@
     }
 </div>
 </div>
+</div>
+</section>

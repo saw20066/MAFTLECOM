@@ -4,27 +4,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <!-- Include FontAwesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-MPFfUd/ub+xUZga6luA6VtK5fBo5CCRNni2q7GJpxwYxguX/3LJpQpbQJMTXhqE29Y4zgFYtU6Lb3sRwFg7/7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Required meta tags -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-MPFfUd/ub+xUZga6luA6VtK5fBo5CCRNni2q7GJpxwYxguX/3LJpQpbQJMTXhqE29Y4zgFYtU6Lb3sRwFg7/7w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <meta name="description" content="Description of your website">
     <meta name="keywords" content="keyword1, keyword2, keyword3">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> MAF TELECOM-@ViewData["Title"]  </title>
     <link rel="icon" type="image/jpeg" href="~/uploads/Logo.jpeg">
-    <!--/google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
-    <!--//google-fonts -->
-    <!--/Template-CSS -->
     <link rel="stylesheet" href="~/assets/css/style-starter.css">
-    <!--//Template-CSS -->
 </head>
 <body>
-        <!-- top header -->
+        @if (!User.IsInRole("Admin"))
+    {
         <section class="w3l-top-header py-3">
             <div class="container">
                 <div class="d-grid main-top">
@@ -72,7 +65,7 @@
                 </div>
             </div>
         </section>
-        <!-- //top header -->
+}
     <!--/Header-->
     <header id="site-header" class="">
         <div class="container">
@@ -110,7 +103,7 @@
                                 <a class="@isActive("Home", "Services")" asp-area="" asp-controller="Home" asp-action="Services">Services</a>
                             </li>
                             <li class="nav-item">
-                                <a class="@isActive("Home", "About")" asp-area="" asp-controller="Home" asp-action="About">About us</a>
+                                <a class="@isActive("Home", "About")" asp-area="" asp-controller="Home" asp-action="About">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="@isActive("Home", "Contact")" asp-area="" asp-controller="Home" asp-action="Contact">Contact US</a>

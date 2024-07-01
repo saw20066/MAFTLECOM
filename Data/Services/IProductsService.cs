@@ -1,5 +1,4 @@
-﻿using MAFTLECOME.Data.Base;
-using MAFTLECOME.Models;
+﻿using MAFTLECOME.Models;
 using System.Collections;
 
 namespace MAFTLECOME.Data.Services

@@ -78,5 +78,15 @@ namespace MAFTLECOME.Data.Repository
             string userId = _userManager.GetUserId(principal);
             return userId;
         }
+        public async Task DeleteOrder(int orderId)
+        {
+            var order = await _db.Orders.FindAsync(orderId);
+            if (order == null)
+            {
+                throw new InvalidOperationException($"Order with id:{orderId} not found");
+            }
+            _db.Orders.Remove(order);
+            await _db.SaveChangesAsync();
+        }
     }
 }

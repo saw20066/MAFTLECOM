@@ -85,7 +85,25 @@ namespace MAFTLECOME.Controllers
         {
             return View();
         }
-       
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteOrder(int orderId)
+        {
+            try
+            {
+                await _userOrderRepository.DeleteOrder(orderId);
+                return RedirectToAction(nameof(AllOrders)); // Redirect to the list of orders or appropriate page after deletion
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Handle the case where the order was not found or other issues
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View("Error"); // You can create an Error view to display the error message
+            }
+        }
+
+
 
     }
 }

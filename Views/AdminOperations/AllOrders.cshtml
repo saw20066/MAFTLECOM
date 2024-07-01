@@ -36,7 +36,11 @@
                         </button>
                         <a asp-action="UpdateOrderStatus" asp-route-orderId="@order.Id" class="btn btn-info">Change Order Status</a>
                         <a asp-action="TogglePaymentStatus" asp-route-orderId="@order.Id" class="btn btn-info">Toggle Payment Status</a>
-
+                        <form asp-action="DeleteOrder" method="post" onsubmit="return confirm('Are you sure you want to delete this order?');" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="orderId" value="@order.Id" />
+                            <button type="submit" class="btn btn-danger">Delete Order</button>
+                        </form>
                         @* appending modal div here *@
                         @* Make sure to put this partial tag inside this td block, otherwise it can cause layout related problem*@
                         @await Html.PartialAsync("/Views/AdminOperations/_OrderDetailModal.cshtml",new OrderDetailModalDTO{DivId=order.Id.ToString(), OrderDetail=order.OrderDetail})

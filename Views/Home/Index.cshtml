@@ -3,8 +3,6 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!-- main-slider -->
 <section class="w3l-main-slider banner-slider" id="home">
     <div class="owl-one owl-carousel owl-theme">
         <div class="item">
@@ -21,8 +19,6 @@
         </div>
     </div>
 </section>
-<!-- //main-slider -->
-<!--/w3-grids-->
 <section class="w3l-passion-sec2 py-5">
     <div class="container py-md-5 py-3">
         <div class="container">
@@ -52,8 +48,6 @@
         </div>
     </div>
 </section>
-<!--//w3-grids-->
-<!-- features section -->
 <section class="w3l-features py-5 pt-0" id="features">
     <div class="container py-lg-5 py-md-4 py-2 pt-0">
         <div class="main-cont-wthree-2 align-items-center text-left">
@@ -99,8 +93,6 @@
         </div>
     </div>
 </section>
-<!--//features section -->
-<!-- /home-page-video-popup-->
 <section class="w3l-index5 py-5" id="video">
     <div class="container py-3 pb-5">
         <div class="w3-videoinf pb-5 mb-3">
@@ -133,8 +125,6 @@
         </div>
     </div>
 </section>
-<!-- //home-page-video-popup-->
-<!--/w3-grids-->
 <section class="w3l-stats-section" id="stats">
     <div class="container">
         <div class="w3l-stats-inner-inf p-5">
@@ -160,8 +150,6 @@
         </div>
     </div>
 </section>
-<!--//w3-grids-->
-<!--/Gallery-Section-->
 <section class="w3l-gallery" id="gallery">
     <div class="destionation-innf py-5">
         <div class="container py-lg-5 py-md-4 py-2 HomePageGallery">
@@ -297,13 +285,9 @@
                 </li>
 
             </ul>
-            <!--//grids-grids-->
-
         </div>
     </div>
 </section>
-<!--//Gallery-Section-->
-<!--/w3-grids-->
 <section class="w3l-passion-mid-sec py-5">
     <div class="container py-md-5 py-3">
         <div class="container">
@@ -342,17 +326,16 @@
         </div>
     </div>
 </section>
-<!--//w3-grids-->
-<!--/testimonials-->
+
 <section class="w3l-testimonials" id="testimonials">
-    <!-- /grids -->
+  
     <div class="cusrtomer-layout py-5">
         <div class="container py-md-5">
             <div class="text-center">
                 <h6 class="title-subw3hny">Our Happy Clients</h6>
                 <h3 class="title-w3l two mb-5">Testimonials</h3>
             </div>
-            <!-- /grids -->
+            
             <div class="testimonial-width pt-lg-4">
                 <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
                     <div class="item">
@@ -375,11 +358,8 @@
                 </div>
             </div>
         </div>
-        <!-- /grids -->
     </div>
 </section>
-<!--//testimonials-->
-<!--/w3l-subscribe-->
 <section class="w3l-subscribe-content">
     <div class="container-fluid">
         <div class="row">
@@ -395,7 +375,9 @@
                     <form action="#" method="post" class="subscribe-wthree pt-2 mt-5">
                         <div class="flex-wrap subscribe-wthree-field">
                             <input class="form-control" type="email" placeholder="Email" name="email" required="">
-                            <button class="btn btn-style btn-primary" type="submit">Subscribe</button>
+                            <button class="btn btn-style btn-primary" type="submit">Subscribe
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register"></a>
+                            </button>
                         </div>
                     </form>
                 </div>

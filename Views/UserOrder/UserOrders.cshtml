@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<Order>
 @{
-
-    ViewData["Title"] = "Order";
+    ViewData["Title"] = "My Order";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,75 +20,70 @@
     </section>
 </div>
 
-<div style="width:100%" class="mt-2">
-    <a href="/Identity/Account/Manage" class="btn btn-primary my-2">Back</a>
 
-    <h4>My Orders</h4>
-    @if (Model != null && Model.Count() > 0)
-    {
-        <table class="table table-striped">
-            <tr>
-                <th>OrderDate</th>
-                <th>OrderStatus</th>
-            </tr>
-            @foreach (var order in Model)
+<section class="w3l-subscribe-content py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+            @if (Model != null && Model.Any())
             {
-                <tr>
-                    <td>@order.CreateDate.ToString("dd-MM-yyyy")</td>
-                    <td>@order.OrderStatus.StatusName</td>
-                </tr>
-                @if (order.OrderDetail != null && order.OrderDetail.Count > 0)
+                @foreach (var order in Model)
                 {
-                    <tr>
-                        <td>
-                            <table class="table table-striped">
-                                <tr>
-                                    <td>
-                                        Total:
-                                    </td>
-                                    <td>
-                                        @(order.OrderDetail.Select(item => item.Product.Price * item.Quantity).Sum())
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Image</th>
-                                    <th>Genre</th>
-                                    <th>Unit Price(INR)</th>
-                                    <th>Total Price</th>
-                                </tr>
-                                @foreach (var item in order.OrderDetail)
-                                {
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Order Date: @order.CreateDate.ToString("dd-MM-yyyy")
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>@item.Product.Name</td>
-                                        <td>
-                                            @if (string.IsNullOrEmpty(item.Product.ImageURL))
-                                            {
-                                                <img src="/images/NoImage.png" style="width:80px;height:100px" />
-                                            }
-                                            else
-                                            {
-                                                <img src="/images/@item.Product.ImageURL" style="width:80px;height:100px" />
-                                            }
-                                        </td>                                       
-                                        <td>@item.Product.Price X @item.Quantity</td>
-                                        <td> @(item.Product.Price * item.Quantity) </td>
+                                        <th>Product</th>
+                                        <th>Image</th>
+                                        <th>Unit Price (INR)</th>
+                                        <th>Quantity</th>
+                                        <th>Total Price</th>
                                     </tr>
-                                }
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in order.OrderDetail)
+                                    {
+                                        <tr>
+                                            <td>@item.Product.Name</td>
+                                            <td>
+                                                @if (string.IsNullOrEmpty(item.Product.ImageURL))
+                                                {
+                                                    <img src="/images/NoImage.png" style="width:80px;height:100px" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="/images/@item.Product.ImageURL" style="width:80px;height:100px" />
+                                                }
+                                            </td>
+                                            <td>@item.Product.Price</td>
+                                            <td>@item.Quantity</td>
+                                                <td>@(item.Product.Price * item.Quantity) €</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4" class="text-end">Total:</td>
+                                        <td>@(order.OrderDetail.Sum(item => item.Product.Price * item.Quantity)) €</td>
+                                    </tr>
+                                </tfoot>
                             </table>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                 }
             }
-        </table>
-
-    }
-    else
-    {
-        <h5>No orders</h5>
-    }
+            else
+            {
+                <div class="alert alert-info text-center" role="alert">
+                    No orders found.
+                </div>
+            }
+              <a href="/Identity/Account/Manage" class="btn btn-primary mt-3">Back</a>
+        </div>
+    </div>
 </div>
-
-
-
+</section>
